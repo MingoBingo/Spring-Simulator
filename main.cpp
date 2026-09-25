@@ -10,12 +10,12 @@ int main()
 {
     srand(time(NULL));
 
-    int numberOfPoints = rand()%200;
+    int numberOfPoints = rand()%2000;
 
     Spring *points = new Spring[numberOfPoints];
 
     Circle circle = {0};
-    float radius = 160;
+    float radius = 80;
 
     circle.radius = radius;
 
@@ -48,7 +48,7 @@ int main()
         {
             DrawCircle(points[i].position.x, points[i].position.y, 10, RED);
         }
-
+        circle.previousCenter = circle.positionCenter;
         EndDrawing();
     }
     delete[] points;

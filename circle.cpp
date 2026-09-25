@@ -3,7 +3,7 @@
 #include "circle.hpp"
 #include "spring.hpp"
 
-bool Circle::hasPointInside(Spring *points, int numberOfPoints, Spring **returnedPoint)
+/*bool Circle::hasPointInside(Spring *points, int numberOfPoints, Spring **returnedPoint)
 {
     for(int i = 0; i < numberOfPoints; ++i)
     {
@@ -20,7 +20,7 @@ bool Circle::hasPointInside(Spring *points, int numberOfPoints, Spring **returne
     }
     return 0;
 }
-
+don't need it anymore */
 void Circle::resolveConflict(Spring *points, int numberOfPoints)
 {
     Spring *returnPoint = NULL;
@@ -33,7 +33,7 @@ void Circle::resolveConflict(Spring *points, int numberOfPoints)
 
             float distance = sqrt(dx * dx + dy * dy);
 
-        if(distance < this->radius)
+        if(distance < this->radius) //check if point is inside
         {
             if(distance == 0)
             {
@@ -56,12 +56,28 @@ void Circle::resolveConflict(Spring *points, int numberOfPoints)
                 returnPoint->velocity.x -= dotProduct * normalx;
                 returnPoint->velocity.y -= dotProduct * normaly;
             }
+
+            Coordinates circleVelocity;
+
+            circleVelocity.x = this->positionCenter.x - this->previousCenter.x;
+            circleVelocity.y = this->positionCenter.y - this->previousCenter.y;
+            
+            float dotProductVelocity = (circleVelocity.x * normalx) + (circleVelocity.y * normaly);
+
+            if(dotProductVelocity > 0)
+            {
+                float impulse = dotProductVelocity * (10/this->radius);
+                returnPoint->velocity.x += (normalx * impulse);
+                returnPoint->velocity.y += (normaly * impulse);
+            }
         }      
     }    
 }
 
 void Circle::moveCircle(Vector2 newPos)
 {
+    this->previousCenter.x = this->positionCenter.x;
+    this->previousCenter.y = this->positionCenter.y;
     this->positionCenter.x = newPos.x;
     this->positionCenter.y = newPos.y;
 }
