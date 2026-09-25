@@ -10,7 +10,7 @@ int main()
 {
     srand(time(NULL));
 
-    int numberOfPoints = 2000;
+    int numberOfPoints = rand()%200;
 
     Spring *points = new Spring[numberOfPoints];
 
