@@ -12,7 +12,7 @@ class Circle
         Coordinates previousCenter;
         float mass;
         float radius;
-        //bool hasPointInside(Spring *points, int numberOfPoints, Spring **returnPoint);
+        bool hasPointInside(Spring *points, int numberOfPoints, Spring **returnPoint);
         void moveCircle(Vector2 newPos);
         void resolveConflict(Spring *points, int numberOfPoints);
 };

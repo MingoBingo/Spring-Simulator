@@ -10,12 +10,12 @@ int main()
 {
     srand(time(NULL));
 
-    int numberOfPoints = rand()%2000;
+    int numberOfPoints = rand() % MAXIMUM_NUMBER_OF_POINTS;
 
     Spring *points = new Spring[numberOfPoints];
 
-    Circle circle = {0};
-    float radius = 80;
+    Circle circle = {900, 900};
+    float radius = CIRCLE_RADIUS;
 
     circle.radius = radius;
 
@@ -36,8 +36,6 @@ int main()
         }
 
         circle.resolveConflict(points, numberOfPoints);
-
-        
 
         BeginDrawing();
         ClearBackground(LIGHTGRAY);

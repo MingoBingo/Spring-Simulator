@@ -5,8 +5,8 @@
 
 Spring::Spring()
 {
-    this->amortization = 0.95;
-    this->rigidity = 0.01f;
+    this->amortization = AMORTIZATION_VALUE;
+    this->rigidity = RIGIDITY_VALUE;
     this->anchorPosition.x = rand()%SCREEN_WIDTH;
     this->anchorPosition.y = rand()%SCREEN_HEIGHT;
     this->velocity.x = 0;

@@ -3,7 +3,7 @@
 #include "circle.hpp"
 #include "spring.hpp"
 
-/*bool Circle::hasPointInside(Spring *points, int numberOfPoints, Spring **returnedPoint)
+bool Circle::hasPointInside(Spring *points, int numberOfPoints, Spring **returnedPoint)
 {
     for(int i = 0; i < numberOfPoints; ++i)
     {
@@ -20,7 +20,7 @@
     }
     return 0;
 }
-don't need it anymore */
+
 void Circle::resolveConflict(Spring *points, int numberOfPoints)
 {
     Spring *returnPoint = NULL;
